@@ -45,6 +45,7 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         black: "#263238",
+        deepgrey: "#4D4D4D",
         silver: "#F5F7FA",
         primary: "#28CB8B",
         secondary: "#263238",
