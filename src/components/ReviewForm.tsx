@@ -27,7 +27,7 @@ export default function CommentForm(props: CommentFormProps) {
 
   return (
     <form
-      className="bg-white rounded-3xl mt-16 shadow-lg pt-4"
+      className="bg-white rounded-3xl mt-16 shadow-xl pt-4"
       onSubmit={handleSubmit((data) => {
         props.setReviews([data, ...props.reviews])
          toast({
