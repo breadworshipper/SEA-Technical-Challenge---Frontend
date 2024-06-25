@@ -30,11 +30,11 @@ export default function CommentForm(props: CommentFormProps) {
       className="bg-white rounded-3xl mt-16 shadow-xl pt-4"
       onSubmit={handleSubmit((data) => {
         props.setReviews([data, ...props.reviews])
-         toast({
-           title: "Review submitted",
-           description: "Thank you for your review!",
-            variant: "success",
-         })
+        toast({
+          title: "Review submitted",
+          description: "Thank you for your review!",
+          variant: "success",
+        })
       })}
     >
       <div className="px-8">
