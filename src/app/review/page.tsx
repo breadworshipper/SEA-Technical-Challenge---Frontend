@@ -6,14 +6,7 @@ import ReviewCard from "@/components/ReviewCard"
 import HeaderBackground from "@/components/ui/HeaderBackground"
 
 export default function ReviewPage() {
-  const [reviews, setReviews] = useState<any>([
-    {
-      name: "Azhra Yashna Azka",
-      date: "22-10-03",
-      rating: 5,
-      review: "This is a review",
-    },
-  ])
+  const [reviews, setReviews] = useState<any>([])
 
   return (
     <main>
