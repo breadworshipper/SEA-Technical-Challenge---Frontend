@@ -4,12 +4,6 @@ import { useState } from "react"
 import { BsThreeDots } from "react-icons/bs"
 import ReviewCard from "@/components/ReviewCard"
 import HeaderBackground from "@/components/ui/HeaderBackground"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 
 export default function ReviewPage() {
   const [reviews, setReviews] = useState<any>([
