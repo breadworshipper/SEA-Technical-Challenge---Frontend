@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils"
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: "SEA Salon",
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("font-sans antialiased", fontSans.variable)}>{children}</body>
+      <body className={cn("font-sans antialiased", fontSans.variable)}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   )
 }

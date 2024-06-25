@@ -9,7 +9,8 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
 import { UserSchema } from "@/types/types"
-import {zodResolver} from "@hookform/resolvers/zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useToast } from "@/components/ui/use-toast"
 
 interface CommentFormProps {
   reviews: any
@@ -22,12 +23,18 @@ export default function CommentForm(props: CommentFormProps) {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(UserSchema) })
+  const { toast } = useToast()
 
   return (
     <form
       className="bg-white rounded-3xl mt-16 shadow-lg pt-4"
       onSubmit={handleSubmit((data) => {
         props.setReviews([data, ...props.reviews])
+         toast({
+           title: "Review submitted",
+           description: "Thank you for your review!",
+            variant: "success",
+         })
       })}
     >
       <div className="px-8">
