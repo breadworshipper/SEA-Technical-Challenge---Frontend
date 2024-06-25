@@ -58,6 +58,7 @@ const config = {
         warning: "#FBC02D",
         error: "#E53835",
         success: "#2E7D31",
+        tint5: "#E8F5E9",
       },
       borderRadius: {
         lg: "var(--radius)",
