@@ -33,6 +33,8 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form"
+import { submitReservation } from "@/services/reservationService"
+import { HandHelping } from "lucide-react"
 
 export default function ReservationForm() {
   const form = useForm<z.infer<typeof ReservationSchema>>({
@@ -50,22 +52,7 @@ export default function ReservationForm() {
       <form
         className="bg-white rounded-3xl mt-16 shadow-xl pt-4 w-3/4 mx-auto"
         onSubmit={form.handleSubmit((data) => {
-          const newData = { ...data }
-          newData.date = data.date.toISOString().split("T")[0]
-          console.log(newData)
-          fetch(`http://127.0.0.1:8000/api/v1/reservation/`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newData),
-          })
-          form.reset()
-          toast({
-            title: "Reservation submitted",
-            variant: "success",
-            description: "Thank you for your reservation!",
-          })
+          submitReservation(data, form.reset, toast)
         })}
       >
         <div className="px-8">
@@ -195,8 +182,8 @@ export default function ReservationForm() {
             </div>
             <div>
               <div className="flex items-center my-4">
-                <Clipboard />
-                <p className="ml-2 font-semibold">Sesi</p>
+                <HandHelping />
+                <p className="ml-2 font-semibold">Layanan</p>
               </div>
               <FormField
                 control={form.control}
