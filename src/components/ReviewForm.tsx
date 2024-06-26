@@ -1,106 +1,169 @@
 "use client"
-import { FaRegCommentDots } from "react-icons/fa"
-import { IoPersonOutline } from "react-icons/io5"
-import { IoIosStarOutline } from "react-icons/io"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { RadioGroup } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
-import { UserSchema } from "@/types/types"
+import { ReviewSchema } from "@/types/reviewTypes"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useToast } from "@/components/ui/use-toast"
+import { UserRound, MessageCircle, Star } from 'lucide-react';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { z } from "zod"
 
-interface CommentFormProps {
+
+interface ReviewFormProps {
   reviews: any
   setReviews: any
 }
 
-export default function CommentForm(props: CommentFormProps) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(UserSchema) })
+export default function ReviewForm(props: ReviewFormProps) {
+  const form = useForm<z.infer<typeof ReviewSchema>>({ 
+    resolver: zodResolver(ReviewSchema),
+    defaultValues: {
+      name: '',
+      review: '',
+      rating: '0'
+    }
+   })
   const { toast } = useToast()
 
   return (
-    <form
-      className="bg-white rounded-3xl mt-16 shadow-xl pt-4"
-      onSubmit={handleSubmit((data) => {
-        props.setReviews([data, ...props.reviews])
-        toast({
-          title: "Review submitted",
-          description: "Thank you for your review!",
-          variant: "success",
-        })
-      })}
-    >
-      <div className="px-8">
-        <div className="flex items-center my-4">
-          <IoPersonOutline className="text-deepgrey" size={20} />
-          <p className="ml-2">Nama</p>
-        </div>
-        <Input
-          {...register("name")}
-          placeholder="Nama"
-          className="my-4 w-1/2"
-        />
-        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+    <Form {...form}>
+      <form
+        className="bg-white rounded-3xl mt-16 shadow-xl pt-4"
+        onSubmit={form.handleSubmit((data) => {
+          props.setReviews([data, ...props.reviews])
+          form.reset()
+          toast({
+            title: "Review submitted",
+            description: "Thank you for your review!",
+            variant: "success",
+          })
+        })}
 
-        <div className="flex items-center my-4">
-          <FaRegCommentDots className="text-deepgrey" size={20} />
-          <p className="ml-2">Review</p>
-        </div>
-        <Textarea
-          {...register("review")}
-          placeholder="Review"
-          className="my-2 w-full resize-none"
-        />
-        {errors.review && (
-          <p className="text-red-500">{errors.review.message}</p>
-        )}
-
-        <div className="flex items-center my-4">
-          <IoIosStarOutline className="text-deepgrey" size={20} />
-          <p className="ml-2">Rating</p>
-        </div>
-        <RadioGroup className="mb-4">
-          <div className="flex">
-            <div className="flex items-center space-x-1 mr-4">
-              <input {...register("rating")} type="radio" value="1" id="1" />
-              <Label htmlFor="1">1</Label>
-            </div>
-            <div className="flex items-center space-x-1 mr-4">
-              <input {...register("rating")} type="radio" value="2" id="2" />
-              <Label htmlFor="2">2</Label>
-            </div>
-            <div className="flex items-center space-x-1 mr-4">
-              <input {...register("rating")} type="radio" value="3" id="3" />
-              <Label htmlFor="3">3</Label>
-            </div>
-            <div className="flex items-center space-x-1 mr-4">
-              <input {...register("rating")} type="radio" value="4" id="4" />
-              <Label htmlFor="4">4</Label>
-            </div>
-            <div className="flex items-center space-x-1">
-              <input {...register("rating")} type="radio" value="5" id="5" />
-              <Label htmlFor="5">5</Label>
-            </div>
-          </div>
-        </RadioGroup>
-        {errors.rating && (
-          <p className="text-red-500">{errors.rating.message}</p>
-        )}
-      </div>
-
-      <Button
-        className="text-white w-full mt-4 rounded-b-3xl rounded-t-none"
-        type="submit"
       >
-        Submit
-      </Button>
-    </form>
+        <div className="px-8">
+          <div className="flex items-center my-4">
+            <UserRound />
+            <p className="ml-2 font-semibold">Nama</p>
+          </div>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input placeholder="Nama" className="my-4 w-1/2" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className="flex items-center my-4">
+            <MessageCircle />
+            <p className="ml-2 font-semibold">Review</p>
+          </div>
+          <FormField
+            control={form.control}
+            name="review"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Textarea
+                    placeholder="Review"
+                    className="my-2 w-full resize-none"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className="flex items-center my-4">
+            <Star />
+            <p className="ml-2 font-semibold">Rating</p>
+          </div>
+            <FormField 
+            control={form.control}
+            name="rating"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className="flex gap-x-4"
+                  >
+
+                    <FormItem className="flex items-center">
+                      <FormControl>
+                        <RadioGroupItem value="1" />
+                      </FormControl>
+                      <FormLabel>
+                        1
+                      </FormLabel>
+                    </FormItem>
+
+                    <FormItem className="flex items-center">
+                      <FormControl>
+                        <RadioGroupItem value="2" />
+                      </FormControl>
+                      <FormLabel>
+                        2
+                      </FormLabel>
+                    </FormItem>
+
+                    <FormItem className="flex items-center">
+                      <FormControl>
+                        <RadioGroupItem value="3" />
+                      </FormControl>
+                      <FormLabel>
+                        3
+                      </FormLabel>
+                    </FormItem>
+
+                    <FormItem className="flex items-center">
+                      <FormControl>
+                        <RadioGroupItem value="4" />
+                      </FormControl>
+                      <FormLabel>
+                        4
+                      </FormLabel>
+                    </FormItem>
+
+                    <FormItem className="flex items-center justify-center">
+                      <FormControl>
+                        <RadioGroupItem value="5" />
+                      </FormControl>
+                      <FormLabel>
+                        5
+                      </FormLabel>
+                    </FormItem>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+            />
+        </div>
+
+        <Button
+          className="text-white w-full mt-4 rounded-b-3xl rounded-t-none"
+          type="submit"
+        >
+          Submit
+        </Button>
+      </form>
+    </Form>
   )
 }
