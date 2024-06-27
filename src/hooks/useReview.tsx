@@ -14,10 +14,8 @@ export default function useReview(toast: any) {
         setLoading(true)
         const data = await getReviews(page, toast) // Use await here
         setData(data)
-        console.log(data.page)
         setLoading(false)
       } catch (error) {
-        console.error(error)
         setLoading(false)
         setError(true)
       }
