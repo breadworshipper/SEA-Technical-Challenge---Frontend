@@ -34,11 +34,11 @@ export function ReviewSection(toast: any) {
                       review={review.review}
                     />
                   ))}
+                  <ReviewPagination pageData={data} setPage={setPage} />
                 </div>
               )}
             </div>
           )}
-          <ReviewPagination pageData={data} setPage={setPage} />
         </div>
       )}
     </div>
