@@ -4,10 +4,9 @@ import { useState } from "react"
 import { BsThreeDots } from "react-icons/bs"
 import ReviewCard from "@/components/ReviewCard"
 import HeaderBackground from "@/components/ui/HeaderBackground"
+import { ReviewSection } from "@/components/ReviewSection"
 
 export default function ReviewPage() {
-  const [reviews, setReviews] = useState<any>([])
-
   return (
     <main>
       <HeaderBackground />
@@ -18,27 +17,10 @@ export default function ReviewPage() {
         <p className="text-center mt-4">
           Leave your kind review through the form below :)
         </p>
-        <ReviewForm reviews={reviews} setReviews={setReviews} />
+        <ReviewForm />
       </section>
       <section className="mx-auto max-w-screen-lg mt-10">
-        {reviews.length === 0 ? (
-          <>
-            <BsThreeDots size={60} className="mx-auto" />
-            <p className="text-center">There's no review yet</p>
-          </>
-        ) : (
-          <div className="flex flex-col gap-y-8">
-            {reviews.map((review, index) => (
-              <ReviewCard
-                key={index}
-                name={review.name}
-                date={new Date().toLocaleDateString()}
-                rating={review.rating}
-                review={review.review}
-              />
-            ))}
-          </div>
-        )}
+        <ReviewSection />
       </section>
     </main>
   )

@@ -17,38 +17,26 @@ import {
 } from "@/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { z } from "zod"
+import { submitReview } from "@/services/reviewService"
 
-
-interface ReviewFormProps {
-  reviews: any
-  setReviews: any
-}
-
-export default function ReviewForm(props: ReviewFormProps) {
-  const form = useForm<z.infer<typeof ReviewSchema>>({ 
+export default function ReviewForm() {
+  const form = useForm<z.infer<typeof ReviewSchema>>({
     resolver: zodResolver(ReviewSchema),
     defaultValues: {
-      name: '',
-      review: '',
-      rating: '0'
-    }
-   })
+      name: "",
+      review: "",
+      rating: "0",
+    },
+  })
   const { toast } = useToast()
 
   return (
     <Form {...form}>
       <form
-        className="bg-white rounded-3xl mt-16 shadow-xl pt-4"
+        className="bg-white rounded-3xl mt-16 shadow-xl pt-4 w-3/4 mx-auto"
         onSubmit={form.handleSubmit((data) => {
-          props.setReviews([data, ...props.reviews])
-          form.reset()
-          toast({
-            title: "Review submitted",
-            description: "Thank you for your review!",
-            variant: "success",
-          })
+          submitReview(data, form.reset, toast)
         })}
-
       >
         <div className="px-8">
           <div className="flex items-center my-4">
@@ -93,7 +81,7 @@ export default function ReviewForm(props: ReviewFormProps) {
             <Star />
             <p className="ml-2 font-semibold">Rating</p>
           </div>
-            <FormField 
+          <FormField
             control={form.control}
             name="rating"
             render={({ field }) => (
@@ -104,57 +92,46 @@ export default function ReviewForm(props: ReviewFormProps) {
                     defaultValue={field.value}
                     className="flex gap-x-4"
                   >
-
                     <FormItem className="flex items-center">
                       <FormControl>
                         <RadioGroupItem value="1" />
                       </FormControl>
-                      <FormLabel>
-                        1
-                      </FormLabel>
+                      <FormLabel>1</FormLabel>
                     </FormItem>
 
                     <FormItem className="flex items-center">
                       <FormControl>
                         <RadioGroupItem value="2" />
                       </FormControl>
-                      <FormLabel>
-                        2
-                      </FormLabel>
+                      <FormLabel>2</FormLabel>
                     </FormItem>
 
                     <FormItem className="flex items-center">
                       <FormControl>
                         <RadioGroupItem value="3" />
                       </FormControl>
-                      <FormLabel>
-                        3
-                      </FormLabel>
+                      <FormLabel>3</FormLabel>
                     </FormItem>
 
                     <FormItem className="flex items-center">
                       <FormControl>
                         <RadioGroupItem value="4" />
                       </FormControl>
-                      <FormLabel>
-                        4
-                      </FormLabel>
+                      <FormLabel>4</FormLabel>
                     </FormItem>
 
                     <FormItem className="flex items-center justify-center">
                       <FormControl>
                         <RadioGroupItem value="5" />
                       </FormControl>
-                      <FormLabel>
-                        5
-                      </FormLabel>
+                      <FormLabel>5</FormLabel>
                     </FormItem>
                   </RadioGroup>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
-            />
+          />
         </div>
 
         <Button
