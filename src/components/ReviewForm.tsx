@@ -92,39 +92,39 @@ export default function ReviewForm() {
                     defaultValue={field.value}
                     className="flex gap-x-4"
                   >
-                    <FormItem className="flex items-center">
+                    <FormItem className="">
                       <FormControl>
                         <RadioGroupItem value="1" />
                       </FormControl>
-                      <FormLabel>1</FormLabel>
+                      <FormLabel className="ml-2">1</FormLabel>
                     </FormItem>
 
-                    <FormItem className="flex items-center">
+                    <FormItem className="">
                       <FormControl>
                         <RadioGroupItem value="2" />
                       </FormControl>
-                      <FormLabel>2</FormLabel>
+                      <FormLabel className="ml-2">2</FormLabel>
                     </FormItem>
 
-                    <FormItem className="flex items-center">
+                    <FormItem className="">
                       <FormControl>
                         <RadioGroupItem value="3" />
                       </FormControl>
-                      <FormLabel>3</FormLabel>
+                      <FormLabel className="ml-2">3</FormLabel>
                     </FormItem>
 
-                    <FormItem className="flex items-center">
+                    <FormItem className="">
                       <FormControl>
                         <RadioGroupItem value="4" />
                       </FormControl>
-                      <FormLabel>4</FormLabel>
+                      <FormLabel className="ml-2">4</FormLabel>
                     </FormItem>
 
-                    <FormItem className="flex items-center justify-center">
+                    <FormItem className="">
                       <FormControl>
                         <RadioGroupItem value="5" />
                       </FormControl>
-                      <FormLabel>5</FormLabel>
+                      <FormLabel className="ml-2">5</FormLabel>
                     </FormItem>
                   </RadioGroup>
                 </FormControl>

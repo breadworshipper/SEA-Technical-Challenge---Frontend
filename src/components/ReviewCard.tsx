@@ -5,7 +5,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { IoPersonOutline } from "react-icons/io5"
 import { IoStar } from "react-icons/io5"
 
 interface ReviewCardProps {
@@ -26,7 +25,7 @@ export default function ReviewCard(props: ReviewCardProps) {
             </Avatar>
             <div className="ml-2">
               <CardTitle className="text-lg">{props.name}</CardTitle>
-              <p className="text-sm">{props.date}</p>
+              <p className="text-sm">{props.date.split("T")[0]}</p>
             </div>
           </div>
           <div className="flex gap-x-4">
