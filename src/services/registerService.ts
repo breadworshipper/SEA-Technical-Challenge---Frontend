@@ -1,5 +1,6 @@
 import { RegisterSchema } from './../types/registerTypes';
 import { z } from 'zod';
+import Cookies from 'js-cookie';
 
 export async function submitRegister(data: z.infer<typeof RegisterSchema>,
   resetForm: () => void,
@@ -24,8 +25,14 @@ export async function submitRegister(data: z.infer<typeof RegisterSchema>,
         console.log(json)
         resetForm()
         
+        // Remove cookies
+        Cookies.remove("access")
+        Cookies.remove("refresh")
+        Cookies.remove("loggedIn")
+        Cookies.remove("role")
+
         // route to home
-        window.location.href = "/"
+        window.location.href = "/auth"
     }
     catch (error) {
         // toast({
