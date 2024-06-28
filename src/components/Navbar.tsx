@@ -38,12 +38,6 @@ export default function Navbar() {
                 <MountainIcon className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
-              <SheetClose asChild>
-                <Button variant="outline" size="icon">
-                  <XIcon className="h-6 w-6" />
-                  <span className="sr-only">Close menu</span>
-                </Button>
-              </SheetClose>
             </div>
             <nav className="flex-1 overflow-auto py-6">
               <div className="grid gap-4 px-6">
@@ -70,6 +64,14 @@ export default function Navbar() {
                 >
                   <PackageIcon className="h-5 w-5" />
                   Reservations
+                </Link>
+                <Link
+                  href="/reservation"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                  prefetch={false}
+                >
+                  <PackageIcon className="h-5 w-5" />
+                  Dashboard
                 </Link>
               </div>
             </nav>
@@ -111,6 +113,15 @@ export default function Navbar() {
               prefetch={false}
             >
               Reservation
+            </Link>
+          </NavigationMenuLink>
+          <NavigationMenuLink asChild>
+            <Link
+              href="/dashboard"
+              className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+              prefetch={false}
+            >
+              Dashboard
             </Link>
           </NavigationMenuLink>
         </NavigationMenuList>
