@@ -1,5 +1,5 @@
 "use client"
-import ReviewForm from "../../components/ReviewForm"
+import ReviewForm from "../../../components/ReviewForm"
 import { useState } from "react"
 import { BsThreeDots } from "react-icons/bs"
 import ReviewCard from "@/components/ReviewCard"

@@ -1,5 +1,6 @@
 import ReservationForm from "@/components/ReservationForm"
-import HeaderBackground from "../../components/ui/HeaderBackground"
+import HeaderBackground from "../../../components/ui/HeaderBackground"
+import Navbar from "@/components/Navbar"
 
 export default function ReservationPage() {
   return (

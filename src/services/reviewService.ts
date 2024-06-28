@@ -24,6 +24,8 @@ export const submitReview = async (
       variant: "success",
       description: "Thank you for your review!",
     })
+    // Refresh page
+    window.location.reload()
   } catch (error) {
     toast({
       title: "Error",
