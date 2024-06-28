@@ -7,10 +7,10 @@ import {
   Sheet,
   SheetTrigger,
   SheetContent,
-  SheetClose,
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Scissors } from "lucide-react"
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -19,7 +19,7 @@ import {
 
 export default function Navbar() {
   return (
-    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 shadow-lg">
+    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 shadow-lg bg-white">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="lg:hidden">
@@ -35,7 +35,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 font-semibold"
                 prefetch={false}
               >
-                <MountainIcon className="h-6 w-6" />
+                <Scissors className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
             </div>
@@ -83,8 +83,8 @@ export default function Navbar() {
         className="mr-6 hidden lg:flex items-center gap-2 font-semibold"
         prefetch={false}
       >
-        <MountainIcon className="h-6 w-6" />
-        <span className="sr-only">Acme Inc</span>
+        <Scissors className="h-6 w-6" />
+        <span className="sr-only">SEA Salon</span>
       </Link>
       <NavigationMenu className="hidden lg:flex">
         <NavigationMenuList>

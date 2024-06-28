@@ -83,3 +83,7 @@
       @apply bg-background text-foreground;
     }
   }
+
+  .sidebar-height {
+  height: calc(100vh - 60px); /* Adjust 60px to your navbar's height */
+}

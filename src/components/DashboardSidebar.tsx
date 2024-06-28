@@ -25,15 +25,10 @@ const sidebarButtonActiveStyles = "bg-white text-primary-orange hover:bg-white"
 const sidebarButtonInactiveStyles =
   "text-white hover:bg-white hover:text-primary"
 
-function SidebarButton({ buttonInfo, key, pathname, isActive, onClick, isLoading }: any) {
+function SidebarButton({ buttonInfo, key, pathname, isActive, onClick }: any) {
   isActive ??= pathname?.startsWith(buttonInfo.route)
 
   const handleClick = (event: React.MouseEvent) => {
-    if (isLoading) {
-      // Optionally prevent click action or provide feedback
-      console.log("Loading in progress. Action disabled.")
-      return
-    }
     if (onClick) {
       event.preventDefault()
       onClick()
@@ -52,17 +47,13 @@ function SidebarButton({ buttonInfo, key, pathname, isActive, onClick, isLoading
           sidebarButtonSizeStyles,
           isActive ? sidebarButtonActiveStyles : sidebarButtonInactiveStyles,
           "w-[200px] justify-start my-0"
-          
         )}
-        disabled={isLoading}
       >
         <buttonInfo.icon
           size={24}
           className={cn(
             "mr-[10px]",
-            isActive
-              ? "text-primary"
-              : "text-white group-hover:text-primary"
+            isActive ? "text-primary" : "text-white group-hover:text-primary"
           )}
         />
         {buttonInfo.label}
@@ -71,16 +62,22 @@ function SidebarButton({ buttonInfo, key, pathname, isActive, onClick, isLoading
   )
 }
 
-export default function DashboardSidebar() {
+type DashboardSidebarProps = {
+  loading: boolean
+}
+
+export default function DashboardSidebar({ loading }: DashboardSidebarProps) {
   const pathname = usePathname()
   return (
-    <aside className="fixed top-[80px] -z-10 w-64 h-screen bg-tint5 py-6 px-4">
-      <Scissors size={100} className="mx-auto" />
-      <h2 className="font-semibold text-2xl text-center text-deepgrey">
-        SEA SALON
-      </h2>
+    <aside className="fixed sidebar-height bg-tint5 py-6 px-4 flex flex-col items-center justify-center">
+      <div>
+        <Scissors size={100} className="mx-auto" />
+        <h2 className="font-semibold text-2xl text-center text-deepgrey">
+          SEA SALON
+        </h2>
+      </div>
 
-      <div className="flex flex-col gap-y-4 items-center justify-center mt-6">
+      <div className="flex flex-col gap-y-4 items-center justify-center mt-6 mb-10">
         <SidebarButton
           buttonInfo={{
             label: "Dashboard",
