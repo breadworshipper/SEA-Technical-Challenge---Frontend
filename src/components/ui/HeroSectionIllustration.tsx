@@ -1,8 +1,8 @@
 export default function HeroSectionIllustration(){
     return (
       <svg
-        width="350"
-        height="350"
+        width="425"
+        height="425"
         viewBox="0 0 274 284"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

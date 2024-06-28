@@ -12,7 +12,7 @@ export default function ServicesSection() {
         </h2>
         <p className="text-center font-light">What we offer to our customer</p>
       </div>
-      <div className="flex flex-col md:flex-row max-w-screen-lg md:gap-x-10 gap-y-8 mx-auto justify-evenly">
+      <div className="flex flex-col md:flex-row max-w-screen-lg md:gap-x-10 gap-y-8 mx-auto justify-evenly items-center">
         <ServicesCard
           title="Haircut & Styling"
           description="Our membership management software provides full automation of membership renewals and payments"
