@@ -1,5 +1,6 @@
 import { z } from "zod"
 import { ReservationSchema } from "@/types/reservationTypes"
+import Cookies from "js-cookie"
 
 export const submitReservation = async (
   data: z.infer<typeof ReservationSchema>,
@@ -33,5 +34,29 @@ export const submitReservation = async (
       variant: "error",
       description: "There was an issue submitting your reservation.",
     })
+  }
+}
+
+export async function getReservation() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/getreservation/`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + Cookies.get("access"),
+        },
+      })
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch reservation")
+    }
+
+    const data = await response.json()
+    console.log(data)
+    return data
+  }
+  catch (error) {
+    console.log(error)
   }
 }
