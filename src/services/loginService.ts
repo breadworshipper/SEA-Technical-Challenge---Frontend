@@ -36,8 +36,15 @@ export async function submitLogin(
 
     resetForm()
     
+    console.log(decoded.role)
     // route to home
-    window.location.href = "/"
+    if (decoded.role === "Admin") {
+      window.location.href = "/admin/dashboard"
+    }
+    else {
+      window.location.href = "/"
+    }
+    
   } catch (error) {
     // toast({
     //   title: "Error",
