@@ -1,16 +1,16 @@
 "use client"
 
-import { Scissors, LayoutDashboard, LogOut } from "lucide-react"
+import { Scissors, LayoutDashboard, LogOut, Building } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { logout } from "@/services/logoutService"
 import { useToast } from "./ui/use-toast"
 import SidebarButton from "./SidebarButton"
 
-export default function DashboardSidebar() {
+export default function AdminDashboardSidebar() {
   const pathname = usePathname()
   const toast = useToast()
   return (
-    <aside className="fixed sidebar-height bg-tint5 py-6 px-4 flex flex-col items-center justify-center">
+    <aside className="fixed h-screen bg-tint5 py-6 px-4 flex flex-col items-center justify-center">
       <div>
         <Scissors size={100} className="mx-auto" />
         <h2 className="font-semibold text-2xl text-center text-deepgrey">
@@ -23,9 +23,20 @@ export default function DashboardSidebar() {
           buttonInfo={{
             label: "Dashboard",
             icon: LayoutDashboard,
-            route: "/dashboard",
+            route: "/admin/dashboard",
           }}
           pathname={pathname}
+          isActive={pathname === "/admin/dashboard"}
+        />
+
+        <SidebarButton
+          buttonInfo={{
+            label: "Branch",
+            icon: Building,
+            route: "/admin/branch",
+          }}
+          pathname={pathname}
+          isActive={pathname === "/admin/branch"}
         />
 
         <SidebarButton

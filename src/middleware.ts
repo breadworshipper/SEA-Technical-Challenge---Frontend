@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 
-const protectedRoutes = ["/admin", "/reservation", "/dashboard"]
+const protectedRoutes = ["/admin", "/reservation", "/dashboard", "/admin/dashboard"]
 
 export default function middleware(req: any) {
 const verified =

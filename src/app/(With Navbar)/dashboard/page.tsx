@@ -9,7 +9,7 @@ export default function DashboardPage() {
 
     return (
       <div className="flex">
-        <DashboardSidebar loading={loading}/>
+        <DashboardSidebar/>
         <main className="ml-72 mt-6">
             <h1 className="text-3xl font-semibold text-deepgrey lg:w-11/12">
                 Past Reservations
