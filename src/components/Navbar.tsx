@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Scissors } from "lucide-react"
+import { Scissors, LayoutDashboard, User } from "lucide-react"
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -70,8 +70,16 @@ export default function Navbar() {
                   className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                   prefetch={false}
                 >
-                  <PackageIcon className="h-5 w-5" />
+                  <LayoutDashboard className="h-5 w-5" />
                   Dashboard
+                </Link>
+                <Link
+                  href="/auth"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                  prefetch={false}
+                >
+                  <User className="h-5 w-5" />
+                  Login/Register
                 </Link>
               </div>
             </nav>
@@ -122,6 +130,15 @@ export default function Navbar() {
               prefetch={false}
             >
               Dashboard
+            </Link>
+          </NavigationMenuLink>
+          <NavigationMenuLink asChild>
+            <Link
+              href="/auth"
+              className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+              prefetch={false}
+            >
+              Login/Register
             </Link>
           </NavigationMenuLink>
         </NavigationMenuList>
