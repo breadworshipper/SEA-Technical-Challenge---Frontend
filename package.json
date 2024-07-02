@@ -30,6 +30,7 @@
     "lucide-react": "^0.396.0",
     "next": "14.2.4",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
     "react-hook-form": "^7.52.0",
@@ -39,6 +40,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@hookform/resolvers": "^3.6.0",
     "@types/node": "^20",
     "@types/react": "^18",
