@@ -1,6 +1,22 @@
 # SEA Technical Challenge - Frontend
 Welcome to the repository. This project is a task for the COMPFEST SEA Academy. 
 
+## Getting Started
+Before running you'd need to add a .env file in root of the project. The content is as follows :
+```
+NEXT_PUBLIC_BACKEND_URL = http://127.0.0.1:8000
+```  
+
+For the first time, to run this project simply do :
+```bash
+npm install
+npm run dev
+```
+After that you'd only need to run 
+```bash
+npm run dev
+```
+
 ## Highlights
 - SEA Salon Hompage
   - Create a homepage for SEA Salon  
@@ -27,19 +43,3 @@ Welcome to the repository. This project is a task for the COMPFEST SEA Academy.
     The system has an admin dashboard, though its implementation is not yet complete.
   - Implement advanced reservation system
 
-
-## Getting Started
-Before running you'd need to add a .env file in root of the project. The content is as follows :
-```
-NEXT_PUBLIC_BACKEND_URL = http://127.0.0.1:8000
-```  
-
-For the first time, to run this project simply do :
-```bash
-npm install
-npm run dev
-```
-After that you'd only need to run 
-```bash
-npm run dev
-```
